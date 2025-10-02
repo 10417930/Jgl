@@ -1,0 +1,5 @@
+{
+  "name": "Compose Mini IDE",
+  "description": "An advanced mini IDE to experiment with a Compose-like DSL, featuring a JS fallback runtime and optional WASM integration. Manage screens, edit code, and see live previews.",
+  "requestFramePermissions": []
+}

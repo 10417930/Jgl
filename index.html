@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Compose Mini IDE - React Edition</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@codemirror/theme-one-dark@6.1.1/dist/index.css">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'brand-bg': '#0f1724',
+              'brand-panel': '#0b1220',
+              'brand-surface': '#111827',
+              'brand-accent': '#4ade80',
+              'brand-muted': '#94a3b8',
+              'brand-border': '#13232f',
+              'brand-border-light': '#1e293b',
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      }
+      .cm-editor {
+        height: 100%;
+        border-radius: 8px;
+        overflow: hidden;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+
+    <!-- External Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.5/dist/FileSaver.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    
+    <!-- CodeMirror Libraries -->
+    <script type="module">
+      import { EditorView } from 'https://cdn.jsdelivr.net/npm/@codemirror/view@6.26.1/+esm';
+      import { EditorState } from 'https://cdn.jsdelivr.net/npm/@codemirror/state@6.4.1/+esm';
+      import { oneDark } from 'https://cdn.jsdelivr.net/npm/@codemirror/theme-one-dark@6.1.1/+esm';
+      import { javascript } from 'https://cdn.jsdelivr.net/npm/@codemirror/lang-javascript@6.2.4/+esm';
+      import { StreamLanguage } from 'https://cdn.jsdelivr.net/npm/@codemirror/language@6.10.1/+esm';
+      import { kotlin } from 'https://cdn.jsdelivr.net/npm/@codemirror/legacy-modes@6.4.0/mode/clike/+esm';
+      import { basicSetup } from 'https://cdn.jsdelivr.net/npm/codemirror@6.0.1/dist/index.js';
+
+      window.CodeMirrorLibs = {
+        EditorView,
+        EditorState,
+        basicSetup,
+        oneDark,
+        javascript,
+        StreamLanguage,
+        kotlin
+      };
+
+      const event = new Event('codemirror-loaded');
+      window.dispatchEvent(event);
+    </script>
+
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
